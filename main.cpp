@@ -15,11 +15,12 @@ int main()
     nomFichierProvisoire += ".gaoud";
     string const nomFichier = nomFichierProvisoire;
     ifstream lectureFichier(nomFichier.c_str());
-
+    // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
         cout << "Ouverture du fichier ...";
     }
+    // Si le fichier n existe pas le cree
     else
     {
         cout << "Aucun fichier de ce nom existant \nCreation du fichier..." << endl;
@@ -32,6 +33,7 @@ int main()
                  << "----------" << nomFichier << "----------" << endl;
             string texte;
             fichier << "----------EDITEUR GATIEN OUDOIRE----------";
+            // Lancement de l editeur de texte
             while (1)
             {
                 getline(cin, texte);
