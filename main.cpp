@@ -10,7 +10,7 @@ int main()
     string nomFichierProvisoire;
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
-         << "Entrez le nom du fichier : ";
+         << "Entrez le nom du fichier (sans la .gaoud) : ";
     cin >> nomFichierProvisoire;
     nomFichierProvisoire += ".gaoud";
     string const nomFichier = nomFichierProvisoire;
@@ -28,6 +28,7 @@ int main()
         if (fichier)
         {
             cout << "Fichier cree !" << endl
+                 << endl
                  << "----------" << nomFichier << "----------" << endl;
             string texte;
             fichier << "----------EDITEUR GATIEN OUDOIRE----------";
