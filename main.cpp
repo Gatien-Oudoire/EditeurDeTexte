@@ -10,6 +10,8 @@ int main()
     string nomFichierProvisoire;
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
+         << " Faite Ctrl + C pour quitter" << endl
+         << endl
          << "Entrez le nom du fichier (sans la .gaoud) : ";
     cin >> nomFichierProvisoire;
     nomFichierProvisoire += ".gaoud";
@@ -18,7 +20,29 @@ int main()
     // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
-        cout << "Ouverture du fichier ...";
+        cout << "Ouverture du fichier ..." << endl
+             << endl;
+        string ligne;
+        while (getline(lectureFichier, ligne))
+        {
+            cout << ligne << endl;
+        };
+        ofstream fichier;
+        string texte;
+        fichier.open(nomFichier.c_str(), ios::app);
+        if (fichier)
+        {
+            while (1)
+            {
+                getline(cin, texte);
+                fichier << texte << endl;
+            }
+            fichier.close();
+        }
+        else
+        {
+            cout << "Erreur dans l edition du fichier";
+        }
     }
     // Si le fichier n existe pas le cree
     else
