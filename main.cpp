@@ -6,15 +6,13 @@ using namespace std;
 
 int main()
 {
-    ofstream essai;
-    essai.open("essai.txt", ios::app);
-    essai << "GLAND";
-    essai.close();
+
     string nomFichierProvisoire;
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
          << "Entrez le nom du fichier : ";
     cin >> nomFichierProvisoire;
+    nomFichierProvisoire += ".gaoud";
     string const nomFichier = nomFichierProvisoire;
     ifstream lectureFichier(nomFichier.c_str());
 
