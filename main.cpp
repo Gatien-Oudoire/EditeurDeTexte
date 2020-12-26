@@ -7,20 +7,18 @@ using namespace std;
 int main()
 {
     int vie = 1;
+    int commande;
     string extension;
     string nomFichierProvisoire;
+    string texte;
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
          << " Faite Ctrl + C pour quitter" << endl
          << endl
          << "Entrez le nom du fichier sans extension : ";
     cin >> nomFichierProvisoire;
-    cout << "Entrez l extension du fichier " << endl << "Laissez vide si vous voulez l extension de base (.gaoud)" << endl;
+    cout << "Entrez l extension du fichier " << endl ;
     cin >> extension;
-    if (extension == "")
-    {
-	extension = "gaoud";	
-    }
     extension = "." + extension;
     nomFichierProvisoire += extension;
     string const nomFichier = nomFichierProvisoire;
@@ -30,13 +28,14 @@ int main()
     {
         cout << "Ouverture du fichier ..." << endl
              << endl;
+	commande = system("clear");
         string ligne;
         while (getline(lectureFichier, ligne))
         {
             cout << ligne << endl;
         };
         ofstream fichier;
-        string texte;
+
         fichier.open(nomFichier.c_str(), ios::app);
         if (fichier)
         {
@@ -44,8 +43,10 @@ int main()
             {
                 getline(cin, texte);
 		if (texte == ":quitter")
-			vie = 0;
-                fichier << texte << endl;
+		{
+		vie = 0;
+                }
+		fichier << texte << endl;
             }
             fichier.close();
         }
@@ -63,16 +64,20 @@ int main()
         if (fichier)
         {
             cout << "Fichier cree !" << endl
-                 << endl
-                 << "----------" << nomFichier << "----------" << endl;
-            string texte;
-            fichier << "----------EDITEUR GATIEN OUDOIRE----------";
+                 << endl;
+	    commande = system("clear");
+            cout << "----------" << nomFichier << "----------" << endl
+		 << "----------EDITEUR GATIEN OUDOIRE----------" << endl;
             // Lancement de l editeur de texte
+
             while (vie)
             {
                 getline(cin, texte);
 		if (texte == ":quitter")
-			vie = 0;
+		{
+		vie = 0;
+		texte = "";
+		}
                 fichier << texte << endl;
             }
         }
