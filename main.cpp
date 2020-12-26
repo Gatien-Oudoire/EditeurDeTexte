@@ -6,15 +6,23 @@ using namespace std;
 
 int main()
 {
-
+    int vie = 1;
+    string extension;
     string nomFichierProvisoire;
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
          << " Faite Ctrl + C pour quitter" << endl
          << endl
-         << "Entrez le nom du fichier (sans la .gaoud) : ";
+         << "Entrez le nom du fichier sans extension : ";
     cin >> nomFichierProvisoire;
-    nomFichierProvisoire += ".gaoud";
+    cout << "Entrez l extension du fichier " << endl << "Laissez vide si vous voulez l extension de base (.gaoud)" << endl;
+    cin >> extension;
+    if (extension == "")
+    {
+	extension = "gaoud";	
+    }
+    extension = "." + extension;
+    nomFichierProvisoire += extension;
     string const nomFichier = nomFichierProvisoire;
     ifstream lectureFichier(nomFichier.c_str());
     // Recherche si le fichier existe si oui le lit
@@ -32,9 +40,11 @@ int main()
         fichier.open(nomFichier.c_str(), ios::app);
         if (fichier)
         {
-            while (1)
+            while (vie)
             {
                 getline(cin, texte);
+		if (texte == ":quitter")
+			vie = 0;
                 fichier << texte << endl;
             }
             fichier.close();
@@ -58,9 +68,11 @@ int main()
             string texte;
             fichier << "----------EDITEUR GATIEN OUDOIRE----------";
             // Lancement de l editeur de texte
-            while (1)
+            while (vie)
             {
                 getline(cin, texte);
+		if (texte == ":quitter")
+			vie = 0;
                 fichier << texte << endl;
             }
         }
