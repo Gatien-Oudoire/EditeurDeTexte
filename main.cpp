@@ -10,11 +10,12 @@ int main(int argc, char *argv[])
     //Variables obligatoires
     int vie(1);
     int commande;
+    bool arguments = false;
     string extension;
     string nomFichierProvisoire;
     string texte;
     string nomFichier;
-    bool arguments = false;
+    ofstream fichier;
 
     // Detection des arguments
     if (argc == 3)
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
     {
         cout << "Entrez le nom du fichier sans extension : ";
         cin >> nomFichierProvisoire;
-        cout << "Entrez l extension du fichier ";
+        cout << "Entrez l extension du fichier : ";
         cin >> extension;
         extension = "." + extension;
         nomFichierProvisoire += extension;
@@ -43,23 +44,18 @@ int main(int argc, char *argv[])
     // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
-        cout << "Ouverture du fichier ..." << endl
-             << endl;
-        commande = system("clear");
-        string ligne;
-        while (getline(lectureFichier, ligne))
-        {
-            cout << ligne << endl;
-        };
-        ofstream fichier;
+        cout << "Ouverture du fichier ..." << endl;
 
-        fichier.open(nomFichier.c_str(), ios::app);
+        lireFichier(&lectureFichier);
+        fichier = creationFichier(nomFichier);
+
         if (fichier)
         {
             while (vie)
             {
                 lireEntreeClavier(&vie, &texte);
-                fichier << texte << endl;
+                if (texte != "")
+                    fichier << texte << endl;
             }
             fichier.close();
         }
@@ -73,8 +69,7 @@ int main(int argc, char *argv[])
     {
         cout << "Aucun fichier de ce nom existant" << endl
              << "Creation du fichier..." << endl;
-        ofstream fichier;
-        fichier.open(nomFichier.c_str(), ios::app);
+        fichier = creationFichier(nomFichier);
         if (fichier)
         {
             cout << "Fichier cree !" << endl
@@ -82,11 +77,11 @@ int main(int argc, char *argv[])
             commande = system("clear");
             cout << "----------" << nomFichier << "----------" << endl;
             // Lancement de l editeur de texte
-
             while (vie)
             {
                 lireEntreeClavier(&vie, &texte);
-                fichier << texte << endl;
+                if (texte != "")
+                    fichier << texte << endl;
             }
         }
         else
