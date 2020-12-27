@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "fichiers.hpp"
 
 using namespace std;
 
@@ -18,24 +19,25 @@ int main(int argc, char *argv[])
     // Detection des arguments
     if (argc == 3)
         arguments = true;
-    
-    cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
+
+    cout << "Bienvenue dans l'editeur de texte par G.O." << endl
          << endl
          << "Entrez :quitter pour sortir du programme" << endl
          << endl;
     if (arguments)
     {
-        nomFichier = (string) argv[1] + "." + (string) argv[2];
+        nomFichier = (string)argv[1] + "." + (string)argv[2];
     }
 
-    else {
-    cout << "Entrez le nom du fichier sans extension : ";
-    cin >> nomFichierProvisoire;
-    cout << "Entrez l extension du fichier " << endl;
-    cin >> extension;
-    extension = "." + extension;
-    nomFichierProvisoire += extension;
-    nomFichier = nomFichierProvisoire;
+    else
+    {
+        cout << "Entrez le nom du fichier sans extension : ";
+        cin >> nomFichierProvisoire;
+        cout << "Entrez l extension du fichier ";
+        cin >> extension;
+        extension = "." + extension;
+        nomFichierProvisoire += extension;
+        nomFichier = nomFichierProvisoire;
     }
     ifstream lectureFichier(nomFichier.c_str());
     // Recherche si le fichier existe si oui le lit
@@ -56,11 +58,7 @@ int main(int argc, char *argv[])
         {
             while (vie)
             {
-                getline(cin, texte);
-                if (texte == ":quitter")
-                {
-                    vie = 0;
-                }
+                lireEntreeClavier(&vie, &texte);
                 fichier << texte << endl;
             }
             fichier.close();
@@ -73,7 +71,8 @@ int main(int argc, char *argv[])
     // Si le fichier n existe pas le cree
     else
     {
-        cout << "Aucun fichier de ce nom existant"<< endl << "Creation du fichier..." << endl;
+        cout << "Aucun fichier de ce nom existant" << endl
+             << "Creation du fichier..." << endl;
         ofstream fichier;
         fichier.open(nomFichier.c_str(), ios::app);
         if (fichier)
@@ -86,12 +85,7 @@ int main(int argc, char *argv[])
 
             while (vie)
             {
-                getline(cin, texte);
-                if (texte == ":quitter")
-                {
-                    vie = 0;
-                    texte = "";
-                }
+                lireEntreeClavier(&vie, &texte);
                 fichier << texte << endl;
             }
         }
