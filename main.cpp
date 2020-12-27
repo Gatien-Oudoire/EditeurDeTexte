@@ -4,31 +4,46 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    int vie = 1;
+    //Variables obligatoires
+    int vie(1);
     int commande;
     string extension;
     string nomFichierProvisoire;
     string texte;
+    string nomFichier;
+    bool arguments = false;
+
+    // Detection des arguments
+    if (argc == 3)
+        arguments = true;
+    
     cout << "Bienvenue dans l'editeur de texte par Gatien Oudoire" << endl
          << endl
-         << " Faite Ctrl + C pour quitter" << endl
-         << endl
-         << "Entrez le nom du fichier sans extension : ";
+         << "Entrez :quitter pour sortir du programme" << endl
+         << endl;
+    if (arguments)
+    {
+        nomFichier = (string) argv[1] + "." + (string) argv[2];
+    }
+
+    else {
+    cout << "Entrez le nom du fichier sans extension : ";
     cin >> nomFichierProvisoire;
-    cout << "Entrez l extension du fichier " << endl ;
+    cout << "Entrez l extension du fichier " << endl;
     cin >> extension;
     extension = "." + extension;
     nomFichierProvisoire += extension;
-    string const nomFichier = nomFichierProvisoire;
+    nomFichier = nomFichierProvisoire;
+    }
     ifstream lectureFichier(nomFichier.c_str());
     // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
         cout << "Ouverture du fichier ..." << endl
              << endl;
-	commande = system("clear");
+        commande = system("clear");
         string ligne;
         while (getline(lectureFichier, ligne))
         {
@@ -42,11 +57,11 @@ int main()
             while (vie)
             {
                 getline(cin, texte);
-		if (texte == ":quitter")
-		{
-		vie = 0;
+                if (texte == ":quitter")
+                {
+                    vie = 0;
                 }
-		fichier << texte << endl;
+                fichier << texte << endl;
             }
             fichier.close();
         }
@@ -58,26 +73,25 @@ int main()
     // Si le fichier n existe pas le cree
     else
     {
-        cout << "Aucun fichier de ce nom existant \nCreation du fichier..." << endl;
+        cout << "Aucun fichier de ce nom existant"<< endl << "Creation du fichier..." << endl;
         ofstream fichier;
         fichier.open(nomFichier.c_str(), ios::app);
         if (fichier)
         {
             cout << "Fichier cree !" << endl
                  << endl;
-	    commande = system("clear");
-            cout << "----------" << nomFichier << "----------" << endl
-		 << "----------EDITEUR GATIEN OUDOIRE----------" << endl;
+            commande = system("clear");
+            cout << "----------" << nomFichier << "----------" << endl;
             // Lancement de l editeur de texte
 
             while (vie)
             {
                 getline(cin, texte);
-		if (texte == ":quitter")
-		{
-		vie = 0;
-		texte = "";
-		}
+                if (texte == ":quitter")
+                {
+                    vie = 0;
+                    texte = "";
+                }
                 fichier << texte << endl;
             }
         }
