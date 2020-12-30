@@ -10,7 +10,7 @@ ofstream creationFichier(string nom)
     {
         return fichier;
     }
-    else 
+    else
     {
         cout << "ERREUR DANS LA CREATION DU FICHIER";
     }
@@ -18,7 +18,6 @@ ofstream creationFichier(string nom)
 
 void lireFichier(ifstream *fichier)
 {
-    int commande = system("clear");
     string ligne;
     while (getline(*fichier, ligne))
     {
@@ -26,7 +25,7 @@ void lireFichier(ifstream *fichier)
     };
 }
 
-void lireEntreeClavier(int *vie, string *texte) 
+void lireEntreeClavier(int *vie, string *texte)
 {
     getline(cin, *texte);
     if (*texte == ":quitter" || *texte == ":q")
