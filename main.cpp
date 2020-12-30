@@ -1,9 +1,20 @@
+//Fichiers sources
 #include <iostream>
 #include <fstream>
 #include <string>
+
+#include "design.hpp"
 #include "fichiers.hpp"
 
 using namespace std;
+
+#ifdef __unix__
+string OperatingSystem = "unix";
+#endif
+
+#ifdef WIN32
+string OperatingSystem = "windows";
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -46,10 +57,9 @@ int main(int argc, char *argv[])
     {
         cout << "Ouverture du fichier ..." << endl;
 
-        lireFichier(&lectureFichier);
-        fichier = creationFichier(nomFichier);
+        lireFichier(&lectureFichier, OperatingSystem);
 
-        if (fichier)
+        if (creationFichier(nomFichier, &fichier) == 0)
         {
             while (vie)
             {
@@ -69,12 +79,11 @@ int main(int argc, char *argv[])
     {
         cout << "Aucun fichier de ce nom existant" << endl
              << "Creation du fichier..." << endl;
-        fichier = creationFichier(nomFichier);
-        if (fichier)
+        if (creationFichier(nomFichier, &fichier) == 0)
         {
             cout << "Fichier cree !" << endl
                  << endl;
-            commande = system("clear");
+            effacer(OperatingSystem);
             cout << "----------" << nomFichier << "----------" << endl;
             // Lancement de l editeur de texte
             while (vie)
@@ -86,7 +95,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            cout << "Erreur dans la creation du fichier" << endl;
+            cout << "Impossible de creer un fichier" << endl;
         }
         fichier.close();
     }
