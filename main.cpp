@@ -41,7 +41,6 @@ int main(int argc, char *argv[])
         nomFichier = nomFichierProvisoire;
     }
     ifstream lectureFichier(nomFichier.c_str());
-    // Recherche si le fichier existe si oui le lit
 	fichier = creationFichier(nomFichier);
 
 	if (fichier){
