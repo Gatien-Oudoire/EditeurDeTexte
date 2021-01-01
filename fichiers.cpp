@@ -2,22 +2,22 @@
 
 using namespace std;
 
-ofstream creationFichier(string nom)
+int creationFichier(string nom, ofstream *fichier)
 {
-    ofstream fichier;
-    fichier.open(nom.c_str(), ios::app);
-    if (fichier)
-    {
-        return fichier;
-    }
-    else
-    {
-        cout << "ERREUR DANS LA CREATION DU FICHIER";
-    }
+    fichier->open(nom.c_str(), ios::app);
+    if (*fichier)
+        return 0;
+    else 
+        return 1;
 }
 
-void lireFichier(ifstream *fichier)
+void lireFichier(ifstream *fichier, string os, string nomFichier)
 {
+
+    if (effacer(os))
+        cout << "echec de la mise en place de l environement " << endl;
+    else 
+        cout << "----------" << nomFichier << "----------" << endl;
     string ligne;
     while (getline(*fichier, ligne))
     {

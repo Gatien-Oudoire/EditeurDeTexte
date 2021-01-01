@@ -1,11 +1,17 @@
-# Editeur de Texte
+# Editeur de Texte | Text Editor
 
-Ceci est un projet d editeur de texte en CLI (ligne de commandes), il aura à l'avenir d'autres fonctionnalités commes des raccourcis
+Ceci est un projet d editeur de texte en CLI (ligne de commandes), il aura à l'avenir d'autres fonctionnalités. Actuellement il ouvre uniquement les ficheres en mode ajout.
 
-# Text Editor
+This is a CLI (command line interface) text editor project, it will have other features. Now it only open file in append mod.
 
-This is a CLI (command line interface) text editor project, it will have other features like shortcuts in the future.
+## Raccourcis | Shortcuts
 
-# A Propos
+:q / :quitter -> quit / quitter
 
-Il n'est pas destiné à un grand avenir
+## Auteur | Author
+
+Gatien Oudoire - 2020 Nancy, France
+
+## A Propos 
+
+Il n'est pas destiné à un grand avenir :)

@@ -5,8 +5,10 @@
 #include <fstream>
 #include <string>
 
-std::ofstream creationFichier(std::string nom);
-void lireFichier(std::ifstream *fichier);
+#include "design.hpp"
+
+int creationFichier(std::string nom, std::ofstream *fichier);
+void lireFichier(std::ifstream *fichier, std::string os, std::string nomFichier);
 void lireEntreeClavier(int *vie, std::string *texte);
 
 #endif

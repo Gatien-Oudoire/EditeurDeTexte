@@ -1,9 +1,18 @@
+//Fichiers sources
 #include <iostream>
 #include <fstream>
 #include <string>
+
+#include "design.hpp"
 #include "fichiers.hpp"
 
 using namespace std;
+
+#ifdef __unix__
+#define SYS "UNIX"
+#elif defined WIN32
+#define SYS "WINDOWS"
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -17,49 +26,47 @@ int main(int argc, char *argv[])
     string nomFichier;
     ofstream fichier;
 
-    // Detection des arguments
-    if (argc == 3)
-        arguments = true;
-
     cout << "Bienvenue dans l'editeur de texte par G.O." << endl
          << endl
          << "Entrez :quitter pour sortir du programme" << endl
          << endl;
-    if (arguments)
-    {
+
+    if (argc == 3)
         nomFichier = (string)argv[1] + "." + (string)argv[2];
-    }
+
+    else if (argc == 2)
+        nomFichier = (string)argv[1];
 
     else
     {
         cout << "Entrez le nom du fichier sans extension : ";
-        cin >> nomFichierProvisoire;
+        cin >> nomFichier;
         cout << "Entrez l extension du fichier : ";
         cin >> extension;
         extension = "." + extension;
-        nomFichierProvisoire += extension;
-        nomFichier = nomFichierProvisoire;
+        nomFichier += extension;
     }
+
     ifstream lectureFichier(nomFichier.c_str());
-	fichier = creationFichier(nomFichier);
+    // Recherche si le fichier existe si oui le lit
+    if (lectureFichier)
+    {
+        lireFichier(&lectureFichier, SYS, nomFichier);
+    }
 
-	if (fichier){
-		commande = system("clear");
-		cout << "----------" << nomFichier << "----------" << endl;
-
-		if (lectureFichier)
-			lireFichier(&lectureFichier);
-
-		while (vie)
-		{
-			lireEntreeClavier(&vie, &texte);
-			if (texte != "")
-				fichier << texte << endl;
-		}
-		fichier.close();
-	}
-	else{
-		cout << "Erreur dans l'edition du fichier";
-	}
+    if (!creationFichier(nomFichier, &fichier))
+    {
+        while (vie)
+        {
+            lireEntreeClavier(&vie, &texte);
+            if (texte != "")
+                fichier << texte << endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+            cout << "Erreur dans l edition du fichier";
+    }
     return 0;
 }
