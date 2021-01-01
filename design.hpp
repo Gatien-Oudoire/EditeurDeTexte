@@ -4,6 +4,6 @@
 #include <string>
 #include <iostream>
 
-void effacer(std::string os);
+int effacer(std::string os);
 
 #endif
