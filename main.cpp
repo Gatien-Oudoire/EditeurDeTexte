@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
     int commande;
     bool arguments = false;
     string extension;
-    string nomFichierProvisoire;
     string texte;
     string nomFichier;
     ofstream fichier;
