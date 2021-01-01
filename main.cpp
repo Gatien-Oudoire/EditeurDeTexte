@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
     //Variables obligatoires
     int vie(1);
     int commande;
-    bool arguments = false;
-    string extension;
+    int compteurLigne = 1;
     string texte;
     string nomFichier;
     ofstream fichier;
@@ -38,26 +37,28 @@ int main(int argc, char *argv[])
 
     else
     {
-        cout << "Entrez le nom du fichier sans extension : ";
-        cin >> nomFichier;
-        cout << "Entrez l extension du fichier : ";
-        cin >> extension;
-        extension = "." + extension;
-        nomFichier += extension;
+        cout << "Veuillez entrez des arguments ex: edt index.html" << endl
+             << endl;
+        return 1;
     }
 
     ifstream lectureFichier(nomFichier.c_str());
     // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
-        lireFichier(&lectureFichier, SYS, nomFichier);
+        lireFichier(&lectureFichier, SYS, nomFichier, &compteurLigne);
+    }
+    else
+    {
+        effacer(SYS);
+        cout << "----------" << nomFichier << "----------" << endl;
     }
 
     if (!creationFichier(nomFichier, &fichier))
     {
         while (vie)
         {
-            lireEntreeClavier(&vie, &texte);
+            lireEntreeClavier(&vie, &compteurLigne, &texte);
             if (texte != "")
                 fichier << texte << endl;
         }
@@ -65,7 +66,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-            cout << "Erreur dans l edition du fichier";
+        cout << "Erreur dans l edition du fichier";
     }
     return 0;
 }
