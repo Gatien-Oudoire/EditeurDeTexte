@@ -41,54 +41,25 @@ int main(int argc, char *argv[])
         nomFichier = nomFichierProvisoire;
     }
     ifstream lectureFichier(nomFichier.c_str());
-    // Recherche si le fichier existe si oui le lit
-    if (lectureFichier)
-    {
-        cout << "Ouverture du fichier ..." << endl;
+	fichier = creationFichier(nomFichier);
 
-        lireFichier(&lectureFichier);
-        fichier = creationFichier(nomFichier);
+	if (fichier){
+		commande = system("clear");
+		cout << "----------" << nomFichier << "----------" << endl;
 
-        if (fichier)
-        {
-            while (vie)
-            {
-                lireEntreeClavier(&vie, &texte);
-                if (texte != "")
-                    fichier << texte << endl;
-            }
-            fichier.close();
-        }
-        else
-        {
-            cout << "Erreur dans l edition du fichier";
-        }
-    }
-    // Si le fichier n existe pas le cree
-    else
-    {
-        cout << "Aucun fichier de ce nom existant" << endl
-             << "Creation du fichier..." << endl;
-        fichier = creationFichier(nomFichier);
-        if (fichier)
-        {
-            cout << "Fichier cree !" << endl
-                 << endl;
-            commande = system("clear");
-            cout << "----------" << nomFichier << "----------" << endl;
-            // Lancement de l editeur de texte
-            while (vie)
-            {
-                lireEntreeClavier(&vie, &texte);
-                if (texte != "")
-                    fichier << texte << endl;
-            }
-        }
-        else
-        {
-            cout << "Erreur dans la creation du fichier" << endl;
-        }
-        fichier.close();
-    }
+		if (lectureFichier)
+			lireFichier(&lectureFichier);
+
+		while (vie)
+		{
+			lireEntreeClavier(&vie, &texte);
+			if (texte != "")
+				fichier << texte << endl;
+		}
+		fichier.close();
+	}
+	else{
+		cout << "Erreur dans l'edition du fichier";
+	}
     return 0;
 }
