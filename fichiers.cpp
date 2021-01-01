@@ -25,7 +25,7 @@ void lireFichier(ifstream *fichier, string os, string nomFichier)
     };
 }
 
-void lireEntreeClavier(int *vie, string *texte) 
+void lireEntreeClavier(int *vie, string *texte)
 {
     getline(cin, *texte);
     if (*texte == ":quitter" || *texte == ":q")
