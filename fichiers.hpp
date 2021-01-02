@@ -8,7 +8,8 @@
 #include "design.hpp"
 
 int creationFichier(std::string nom, std::ofstream *fichier);
-void lireFichier(std::ifstream *fichier, std::string os, std::string nomFichier, int *compteurLigne);
-void lireEntreeClavier(int *vie, int *compteurLigne, std::string *texte);
+int supprimerFichier(std::string nomFichier, std::ofstream *fichier);
+void lireFichier(std::ifstream *fichier, std::string nomFichier, int *compteurLigne);
+void lireEntreeClavier(int *vie, int *compteurLigne, std::string *texte, std::string nomFichier, std::ofstream *fichier);
 
 #endif

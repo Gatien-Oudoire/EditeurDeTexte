@@ -13,7 +13,8 @@ Vous pouvez télécharger le projet à cette adresse
 
 ## Raccourcis | Shortcuts
 
-:q / :quitter -> quit / quitter
+:q / :quitter -> quitter
+:del / :rm -> supprimer fichier
 
 ## Auteur | Author
 

@@ -8,11 +8,7 @@
 
 using namespace std;
 
-#ifdef __unix__
-#define SYS "UNIX"
-#elif defined WIN32
-#define SYS "WINDOWS"
-#endif
+
 
 int main(int argc, char *argv[])
 {
@@ -37,8 +33,7 @@ int main(int argc, char *argv[])
 
     else
     {
-        cout << "Veuillez entrez des arguments ex: edt index.html" << endl
-             << endl;
+        afficherCouleur("Veuillez entrez des arguments ex: edt index.html ", 'R', true);
         return 1;
     }
 
@@ -46,19 +41,19 @@ int main(int argc, char *argv[])
     // Recherche si le fichier existe si oui le lit
     if (lectureFichier)
     {
-        lireFichier(&lectureFichier, SYS, nomFichier, &compteurLigne);
+        lireFichier(&lectureFichier, nomFichier, &compteurLigne);
     }
     else
     {
-        effacer(SYS);
-        cout << "----------" << nomFichier << "----------" << endl;
+        effacer();
+        afficherCouleur("----------" + nomFichier + "----------", 'B', true);
     }
 
     if (!creationFichier(nomFichier, &fichier))
     {
         while (vie)
         {
-            lireEntreeClavier(&vie, &compteurLigne, &texte);
+            lireEntreeClavier(&vie, &compteurLigne, &texte, nomFichier, &fichier);
             if (texte != "")
                 fichier << texte << endl;
         }
