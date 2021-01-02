@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int effacer(string os)
+int effacer()
 {
-    if (os == "WINDOWS")
+    if (SYS == "WINDOWS")
         system("cls");
-    else if (os == "UNIX")
+    else if (SYS == "UNIX")
         system("clear");
     else
         return 1;

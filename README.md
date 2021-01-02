@@ -6,7 +6,8 @@ This is a CLI (command line interface) text editor project, it will have other f
 
 ## Raccourcis | Shortcuts
 
-:q / :quitter -> quit / quitter
+:q / :quitter -> quitter
+:del / :rm -> supprimer fichier
 
 ## Auteur | Author
 
