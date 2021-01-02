@@ -26,6 +26,7 @@ void lireFichier(ifstream *fichier, string os, string nomFichier, int *compteurL
     };
 }
 
+
 void lireEntreeClavier(int *vie, int *compteurLigne, string *texte)
 {
     afficherLigne(compteurLigne);
