@@ -33,8 +33,7 @@ int main(int argc, char *argv[])
 
     else
     {
-        cout << "Veuillez entrez des arguments ex: edt index.html" << endl
-             << endl;
+        afficherCouleur("Veuillez entrez des arguments ex: edt index.html ", 'R', true);
         return 1;
     }
 
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
     else
     {
         effacer();
-        cout << "----------" << nomFichier << "----------" << endl;
+        afficherCouleur("----------" + nomFichier + "----------", 'B', true);
     }
 
     if (!creationFichier(nomFichier, &fichier))

@@ -17,7 +17,7 @@ void lireFichier(ifstream *fichier, string nomFichier, int *compteurLigne)
     if (effacer())
         cout << "echec de la mise en place de l environement " << endl;
     else
-        cout << "----------" << nomFichier << "----------" << endl;
+        afficherCouleur("----------" + nomFichier + "----------", 'B', true);
     string ligne;
     while (getline(*fichier, ligne))
     {

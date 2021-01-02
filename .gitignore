@@ -2,6 +2,7 @@ exec
 *.test
 *.out
 *.html
-edt-win.exe
+*.sh
+edt*
 todo
 .vscode

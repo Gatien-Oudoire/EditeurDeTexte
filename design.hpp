@@ -9,8 +9,10 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 
 int effacer();
 void afficherLigne(int *compteurLigne);
+void afficherCouleur(std::string texte, char couleur, bool sauterLigne=false);
 
 #endif
