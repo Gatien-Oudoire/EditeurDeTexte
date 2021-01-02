@@ -4,6 +4,13 @@ Ceci est un projet d editeur de texte en CLI (ligne de commandes), il aura à l'
 
 This is a CLI (command line interface) text editor project, it will have other features. Now it only open file in append mod.
 
+## Télécharger
+
+Vous pouvez télécharger le projet à cette adresse
+
+<https://github.com/Gatien-Oudoire/EditeurDeTexte/releases>
+
+
 ## Raccourcis | Shortcuts
 
 :q / :quitter -> quit / quitter
