@@ -4,12 +4,15 @@ Ceci est un projet d editeur de texte en CLI (ligne de commandes), il aura à l'
 
 This is a CLI (command line interface) text editor project, it will have other features. Now it only open file in append mod.
 
-## Télécharger
+## Télécharger & Installer
 
 Vous pouvez télécharger le projet à cette adresse
 
 <https://github.com/Gatien-Oudoire/EditeurDeTexte/releases>
 
+Vous pouvez aussi télécharger les fichiers sources puis creer l'exécutable en faisant la commande 
+
+>make
 
 ## Raccourcis | Shortcuts
 
