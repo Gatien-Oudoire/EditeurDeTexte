@@ -1,3 +1,7 @@
 exec
 *.test
 *.out
+*.html
+edt-win.exe
+todo
+.vscode

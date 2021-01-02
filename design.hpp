@@ -5,5 +5,6 @@
 #include <iostream>
 
 int effacer(std::string os);
+void afficherLigne(int *compteurLigne);
 
 #endif
