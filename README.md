@@ -17,6 +17,7 @@ Vous pouvez aussi télécharger les fichiers sources puis creer l'exécutable en
 ## Raccourcis | Shortcuts
 
 >:q   (:quitter) // quit
+
 >:del (:rm) // supprimer fichier
 
 ## Auteur | Author
