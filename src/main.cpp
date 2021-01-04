@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
     else
     {
-        afficherCouleur("Veuillez entrez des arguments ex: edt index.html ", 'R', true);
+        afficherCouleur("Veuillez entrez des arguments ex: edt index.html ", 'R', "\n\nPar defaut sous Windows les couleurs ne sont pas prises en charge \n");
         return 1;
     }
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     else
     {
         effacer();
-        afficherCouleur("----------" + nomFichier + "----------", 'B', true);
+        afficherCouleur("----------" + nomFichier + "----------", 'B', "\n");
     }
 
     if (!creationFichier(nomFichier, &fichier))

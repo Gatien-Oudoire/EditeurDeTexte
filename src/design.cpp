@@ -19,15 +19,15 @@ void afficherLigne(int *compteurLigne)
     *compteurLigne += 1;
 }
 
-void afficherCouleur(string texte, char couleur, bool sauterLigne)
+void afficherCouleur(string texte, char couleur, string texteSupp)
 {
-    if(SYS == "UNIX")
+    if (SYS == "UNIX")
     {
-    map<char, int> codeCouleur = {{'R', 31}, {'B', 34}};
-    cout << "\033[1;" << codeCouleur[couleur] << "m" << texte << "\033[0m";
+        map<char, int> codeCouleur = {{'R', 31}, {'B', 34}};
+        cout << "\033[1;" << codeCouleur[couleur] << "m" << texte << "\033[0m";
     }
-    else 
+    else
         cout << texte;
-    if (sauterLigne)
-        cout << endl;
+    if (texteSupp.size() > 0)
+        cout << texteSupp;
 }

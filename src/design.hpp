@@ -3,7 +3,7 @@
 
 #ifdef __unix__
 #define SYS "UNIX"
-#elif defined WIN32
+#elif defined WIN32 || defined _WIN32
 #define SYS "WINDOWS"
 #endif
 
@@ -13,6 +13,6 @@
 
 int effacer();
 void afficherLigne(int *compteurLigne);
-void afficherCouleur(std::string texte, char couleur, bool sauterLigne=false);
+void afficherCouleur(std::string texte, char couleur, std::string texteSupp="");
 
 #endif
