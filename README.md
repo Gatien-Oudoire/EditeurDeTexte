@@ -10,20 +10,20 @@ Vous pouvez télécharger le projet à cette adresse
 
 <https://github.com/Gatien-Oudoire/EditeurDeTexte/releases>
 
-Vous pouvez aussi télécharger les fichiers sources puis creer l'exécutable en faisant la commande 
+Vous pouvez aussi télécharger les fichiers sources puis creer l'exécutable en faisant la commande
 
->make
+> g++ src/*.cpp -o edt
 
 ## Raccourcis | Shortcuts
 
->:q   (:quitter) // quit
+> :q (:quitter) // quit
 
->:del (:rm) // supprimer fichier
+> :del (:rm) // supprimer fichier
 
 ## Auteur | Author
 
 Gatien Oudoire - 2020 Nancy, France
 
-## A Propos 
+## A Propos
 
 Il n'est pas destiné à un grand avenir :)
